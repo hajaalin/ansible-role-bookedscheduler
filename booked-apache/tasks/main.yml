@@ -1,0 +1,54 @@
+---
+# tasks file for role "booked"
+- name: apt-get update
+  apt: update_cache=yes
+
+- name: install dependencies
+  apt: name={{ item }} state=present
+  with_items:
+    - apache2
+    - php5
+    - php5-mysql
+    - libapache2-mod-php5
+    - php5-mcrypt
+
+- name: remove default /var/www/html
+  file: path=/var/www/html state=absent
+
+- name: create directories
+  file: path={{ item }} state=directory owner=www-data group=www-data
+  with_items:
+    - /var/lock/apache2
+    - /var/run/apache2
+    - /var/log/apache2
+    - /var/www/html
+    - /var/log/booked
+
+# Apache + PHP requires preforking Apache for best results
+- command: a2dismod mpm_event
+- command: a2enmod mpm_prefork
+# enable SSL
+- command: a2enmod ssl
+
+
+- name: backup default apache2.conf
+  command: cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf.dist
+
+- name: enable modssh
+  command: cp /etc/apache2/mods-available/ssl.conf /etc/apache2/conf-enabled/
+
+- name: remove default enabled sites
+  file: path=/etc/apache2/sites-enabled state=absent
+
+- name: recreate enabled sites directory
+  file: path=/etc/apache2/sites-enabled state=directory
+
+- copy: src=etc/apache2/sites-enabled/booked.conf dest=/etc/apache2/sites-enabled/booked.conf
+- copy: src=booked/ dest=/var/www/html
+- command: cp /var/www/html/config/config.dist.php /var/www/html/config/config.php
+
+- name: create .htaccess file
+  shell: echo "DirectoryIndex index.php" > /var/www/html/.htaccess
+
+- name: fix ownership of /var/www/html
+  file: path=/var/www/html recurse=yes owner=www-data group=www-data
