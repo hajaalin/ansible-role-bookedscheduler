@@ -43,7 +43,7 @@
 - name: recreate enabled sites directory
   file: path=/etc/apache2/sites-enabled state=directory
 
-- copy: src=etc/apache2/sites-enabled/booked.conf dest=/etc/apache2/sites-enabled/booked.conf
+- template: src=etc/apache2/sites-enabled/booked.conf dest=/etc/apache2/sites-enabled/booked.conf
 - copy: src=booked/ dest=/var/www/html
 - command: cp /var/www/html/config/config.dist.php /var/www/html/config/config.php
 
