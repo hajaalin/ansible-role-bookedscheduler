@@ -11,6 +11,7 @@
     - php5-mysql
     - libapache2-mod-php5
     - php5-mcrypt
+    - unzip
 
 - name: remove default /var/www/html
   file: path=/var/www/html state=absent
@@ -44,7 +45,11 @@
   file: path=/etc/apache2/sites-enabled state=directory
 
 - template: src=etc/apache2/sites-enabled/booked.conf dest=/etc/apache2/sites-enabled/booked.conf
-- copy: src=booked/ dest=/var/www/html
+
+- unarchive: src=booked-2.5.13.zip dest=/tmp
+
+- shell: mv /tmp/booked/* /var/www/html
+
 - command: cp /var/www/html/config/config.dist.php /var/www/html/config/config.php
 
 - name: create .htaccess file
