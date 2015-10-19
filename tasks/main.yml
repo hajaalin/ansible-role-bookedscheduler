@@ -13,8 +13,26 @@
     - php5-mcrypt
     - unzip
 
+# Apache + PHP requires preforking Apache for best results
+- apache2_module: name=mpm_event state=absent
+- apache2_module: name=mpm_prefork state=present
+
+# enable SSL
+- apache2_module: name=ssl state=present
+
+- name: backup default apache2.conf
+  command: cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf.dist
+  args:
+    creates: /etc/apache2/apache2.conf.dist
+
+
+- name: check if this first install
+  stat: path=/var/www/html/config/config.php
+  register: previously_provisioned
+
 - name: remove default /var/www/html
   file: path=/var/www/html state=absent
+  when: previously_provisioned.stat.exists == False
 
 - name: create directories
   file: path={{ item }} state=directory owner=www-data group=www-data
@@ -23,37 +41,42 @@
     - /var/run/apache2
     - /var/log/apache2
     - /var/www/html
-    - /var/log/booked
+    - "{{ booked_log_dir }}"
 
-# Apache + PHP requires preforking Apache for best results
-- command: a2dismod mpm_event
-- command: a2enmod mpm_prefork
-# enable SSL
-- command: a2enmod ssl
+#- name: enable modssh
+#  command: cp /etc/apache2/mods-available/ssl.conf /etc/apache2/conf-enabled/
 
+#- name: remove default enabled sites
+#  file: path=/etc/apache2/sites-enabled state=absent
 
-- name: backup default apache2.conf
-  command: cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf.dist
+#- name: recreate enabled sites directory
+#  file: path=/etc/apache2/sites-enabled state=directory
 
-- name: enable modssh
-  command: cp /etc/apache2/mods-available/ssl.conf /etc/apache2/conf-enabled/
+#- template: src=etc/apache2/sites-enabled/booked.conf dest=/etc/apache2/sites-enabled/booked.conf
 
-- name: remove default enabled sites
-  file: path=/etc/apache2/sites-enabled state=absent
-
-- name: recreate enabled sites directory
-  file: path=/etc/apache2/sites-enabled state=directory
-
-- template: src=etc/apache2/sites-enabled/booked.conf dest=/etc/apache2/sites-enabled/booked.conf
-
+# unpack source and move to document root
 - unarchive: src=booked-2.5.13.zip dest=/tmp
-
+  when: previously_provisioned.stat.exists == False
 - shell: mv /tmp/booked/* /var/www/html
+  when: previously_provisioned.stat.exists == False
+#- command: cp /var/www/html/config/config.dist.php /var/www/html/config/config.php
+#  args:
+#    creates: /var/www/html/config/config.php
 
-- command: cp /var/www/html/config/config.dist.php /var/www/html/config/config.php
+- name: template Booked config file
+  template: src=config.php dest=/var/www/html/config/config.php
+
+- name: template Booked log config file
+  template: src=log4php.config.xml dest=/var/www/html/config/log4php.config.xml
 
 - name: create .htaccess file
   shell: echo "DirectoryIndex index.php" > /var/www/html/.htaccess
+  args:
+    creates: /var/www/html/.htaccess
 
 - name: fix ownership of /var/www/html
   file: path=/var/www/html recurse=yes owner=www-data group=www-data
+
+- name: restart apache2
+  service: name=apache2 state=restarted
+  when: not build_docker_image

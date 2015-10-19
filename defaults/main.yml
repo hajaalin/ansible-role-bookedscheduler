@@ -5,7 +5,36 @@
 # - DOCKER_HOST should be set as an environment variable and edited 
 #   in a startup script 
 # - the SSL certificate and key files should be mounted as volumes 
+build_docker_image: true
 server_name: DOCKER_HOST
 ssl_certificate_file: /etc/pki/tls/certs/docker-host-certificate.pem
 ssl_certificate_key_file: /etc/pki/tls/private/docker-host.key
 
+booked_app_title: "Booked Scheduler"
+booked_default_timezone: "America/Chicago"
+booked_allow_self_registration: "true"
+booked_admin_email: "admin@example.com"
+booked_admin_email_name: "Booked Scheduler"
+booked_default_language: "en_us"
+booked_script_url: "http://localhost/Web"
+booked_registration_captcha_enabled: "true"
+booked_inactivity_timeout: "30"
+booked_disable_password_reset: "false"
+booked_logout_url: ""
+booked_privacy_view_schedules: "false"
+booked_privacy_view_reservations: "false"
+booked_privacy_hide_user_details: "false"
+booked_privacy_hide_reservation_details: "false"
+booked_reservation_prevent_participation: "false"
+booked_reservation_prevent_recurrence: "false"
+booked_db_user: "booked_user"
+booked_db_password: "password"
+booked_db_name: "bookedscheduler"
+booked_db_hostspec: "127.0.0.1"
+booked_plugin_authentication: ""
+booked_plugin_prereservation: ""
+booked_api_enabled: "false"
+
+booked_log_dir: 'C:\temp\'
+booked_log_level_app: "OFF"
+booked_log_level_sql: "OFF"

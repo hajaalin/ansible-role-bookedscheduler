@@ -1,0 +1,24 @@
+<log4php:configuration xmlns:log4php="http://logging.apache.org/log4php/">
+	<appender name="defaultAppender" class="LoggerAppenderDailyFile">
+		<layout class="LoggerLayoutPattern">
+			<param name="conversionPattern" value="%d [%t] %p %logger{0} - %m%n" />
+		</layout>
+		<param name="file" value="{{ booked_log_dir}}log_%s.log" />
+		<param name="append" value="true" />
+	</appender>
+	<appender name="sqlAppender" class="LoggerAppenderDailyFile">
+		<layout class="LoggerLayoutPattern">
+			<param name="conversionPattern" value="%d [%t] %p %logger{0} - %m%n" />
+		</layout>
+		<param name="file" value="{{ booked_log_dir }}sql_log_%s.log" />
+		<param name="append" value="true" />
+	</appender>
+    <logger name="default" additivity="false">
+        <level value="{{ booked_log_level_app }}" />
+        <appender_ref ref="defaultAppender" />
+    </logger>
+	<logger name="sql" additivity="false">
+        <level value="{{ booked_log_level_sql }}" />
+        <appender_ref ref="sqlAppender" />
+    </logger>
+</log4php:configuration>
