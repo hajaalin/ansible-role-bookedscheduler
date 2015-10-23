@@ -2,14 +2,13 @@
 # defaults file for ansible-booked-apache
 
 # using these defaults assumes that the role is deployed in a Docker container
-# - DOCKER_HOST should be set as an environment variable and edited 
-#   in a startup script 
-# - the SSL certificate and key files should be mounted as volumes 
+# - docker_host should be set as an environment variable and edited
+#   in a startup script
+# - the SSL certificate and key files should be mounted as volumes
 build_docker_image: true
-server_name: DOCKER_HOST
-ssl_certificate_file: /etc/pki/tls/certs/docker-host-certificate.pem
-ssl_certificate_key_file: /etc/pki/tls/private/docker-host.key
+#server_name: docker_host
 
+# these variables will be templated in Booked configuration (config/config.php)
 booked_app_title: "Booked Scheduler"
 booked_default_timezone: "America/Chicago"
 booked_allow_self_registration: "true"
