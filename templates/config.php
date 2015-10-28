@@ -50,7 +50,7 @@ $conf['settings']['home.url'] = ''; 	      					// the url to open when the logo
 $conf['settings']['logout.url'] = '{{ booked_logout_url }}'; 	      					// the url to be directed to after logging out
 
 $conf['settings']['schedule']['use.per.user.colors'] = 'false'; 		// color reservations by user
-$conf['settings']['schedule']['show.inaccessible.resources'] = 'true';  // whether or not resources that are inaccessible to the user are visible
+$conf['settings']['schedule']['show.inaccessible.resources'] = '{{ booked_schedule_show_inaccessible_resources }}';  // whether or not resources that are inaccessible to the user are visible
 $conf['settings']['schedule']['reservation.label'] = '{name}';    		// format for what to display on the reservation slot label. Available properties are: {name}, {title}, {description}, {email}, {phone}, {organization}, {position}, {startdate}, {enddate} {resourcename} {participants} {invitees}. Custom attributes can be added using att with the attribute id. For example {att1}
 $conf['settings']['schedule']['hide.blocked.periods'] = 'false';    	// if blocked periods should be hidden or shown
 
