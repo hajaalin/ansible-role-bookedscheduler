@@ -2,8 +2,11 @@
 # tasks file for role "booked"
 
 # Setup/install tasks.
+- include: setup-CentOS.yml
+  when: ansible_distribution == 'CentOS'
+
 - include: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
+  when: ansible_distribution == 'RedHat'
 
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
