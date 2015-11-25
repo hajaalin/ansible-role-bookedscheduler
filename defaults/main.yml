@@ -21,18 +21,28 @@ booked_inactivity_timeout: "30"
 booked_disable_password_reset: "false"
 booked_logout_url: ""
 booked_schedule_show_inaccessible_resources: "true"
+
 booked_privacy_view_schedules: "false"
 booked_privacy_view_reservations: "false"
 booked_privacy_hide_user_details: "false"
 booked_privacy_hide_reservation_details: "false"
+
 booked_reservation_prevent_participation: "false"
 booked_reservation_prevent_recurrence: "false"
+
+booked_ics_require_login: "true"
+booked_ics_subscription_key: ""
+booked_ics_import: "false"
+booked_ics_import_key: ""
+
 booked_db_user: "booked_user"
 booked_db_password: "password"
 booked_db_name: "bookedscheduler"
 booked_db_hostspec: "127.0.0.1"
+
 booked_plugin_authentication: ""
 booked_plugin_prereservation: ""
+
 booked_api_enabled: "false"
 
 booked_log_dir: 'C:\temp\'

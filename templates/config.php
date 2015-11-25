@@ -57,10 +57,10 @@ $conf['settings']['schedule']['hide.blocked.periods'] = 'false';    	// if block
 /**
  * ical integration configuration
  */
-$conf['settings']['ics']['require.login'] = 'true';             // recommended, if the user must be logged in to access ics files
-$conf['settings']['ics']['subscription.key'] = '';              // must be set to allow webcal subscriptions
-$conf['settings']['ics']['import'] = 'false';					// enable iCal import
-$conf['settings']['ics']['import.key'] = '';					// it's recommended  to set this key when iCal import is enabled
+$conf['settings']['ics']['require.login'] = '{{ booked_ics_require_login }}';             // recommended, if the user must be logged in to access ics files
+$conf['settings']['ics']['subscription.key'] = '{{ booked_ics_subscription_key }}';              // must be set to allow webcal subscriptions
+$conf['settings']['ics']['import'] = '{{ booked_ics_import }}';					// enable iCal import
+$conf['settings']['ics']['import.key'] = '{{ booked_ics_import_key }}';					// it's recommended  to set this key when iCal import is enabled
 /**
  * Privacy configuration
  */
