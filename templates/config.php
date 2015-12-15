@@ -43,7 +43,7 @@ $conf['settings']['registration.require.email.activation'] = 'false';		// requir
 $conf['settings']['registration.auto.subscribe.email'] = 'false';			// requires enable.email = true
 $conf['settings']['registration.notify.admin'] = 'false';		// whether the registration of a new user sends an email to the admin (ala phpScheduleIt 1.2)
 $conf['settings']['inactivity.timeout'] = '{{ booked_inactivity_timeout }}';     			// minutes before the user is automatically logged out
-$conf['settings']['name.format'] = '{first} {last}';     		// display format when showing user names
+$conf['settings']['name.format'] = '{{ booked_name_format }}';     		// display format when showing user names
 $conf['settings']['css.extension.file'] = ''; 			      	// full or relative url to an additional css file to include. this can be used to override the default style
 $conf['settings']['disable.password.reset'] = '{{ booked_disable_password_reset }}'; 	      	// if the password reset functionality should be disabled
 $conf['settings']['home.url'] = ''; 	      					// the url to open when the logo is clicked
