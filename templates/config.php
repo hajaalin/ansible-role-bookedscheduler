@@ -30,8 +30,8 @@ $conf['settings']['default.timezone'] = '{{ booked_default_timezone }}';      //
 $conf['settings']['allow.self.registration'] = '{{ booked_allow_self_registration }}';         	// if users can register themselves
 $conf['settings']['admin.email'] = '{{ booked_admin_email }}';         // email address of admin user
 $conf['settings']['admin.email.name'] = '{{ booked_admin_email_name }}';	// name to be used in From: field when sending automatic emails
-$conf['settings']['default.page.size'] = '50';                  // number of records per page
-$conf['settings']['enable.email'] = 'true';                     // global configuration to enable if any emails will be sent
+$conf['settings']['default.page.size'] = '{{ booked_default_page_size }}';                  // number of records per page
+$conf['settings']['enable.email'] = '{{ booked_enable_email }}';                     // global configuration to enable if any emails will be sent
 $conf['settings']['default.language'] = '{{ booked_default_language }}';                // find your language in the lang directory
 $conf['settings']['script.url'] = '{{ booked_script_url }}';   	// public URL to the Web directory of this instance. this is the URL that appears when you are logging in. leave http: or https: off to auto-detect
 $conf['settings']['image.upload.directory'] = 'Web/uploads/images'; // full or relative path to where images will be stored
@@ -162,12 +162,12 @@ $conf['settings']['password']['upper.and.lower'] = 'false';
 /**
  * Label display settings
  */
-$conf['settings']['reservation.labels']['ics.summary'] = '{title}';
-$conf['settings']['reservation.labels']['ics.my.summary'] = '{title}';
-$conf['settings']['reservation.labels']['rss.description'] = '<div><span>Start</span> {startdate}</div><div><span>End</span> {enddate}</div><div><span>Organizer</span> {name}</div><div><span>Description</span> {description}</div>';
-$conf['settings']['reservation.labels']['my.calendar'] = '{resourcename} {title}';
-$conf['settings']['reservation.labels']['resource.calendar'] = '{name}';
-$conf['settings']['reservation.labels']['reservation.popup'] = '';
+$conf['settings']['reservation.labels']['ics.summary'] = '{{ booked_reservation_labels_ics_summary }}';
+$conf['settings']['reservation.labels']['ics.my.summary'] = '{{ booked_reservation_labels_ics_my_summary }}';
+$conf['settings']['reservation.labels']['rss.description'] = '{{ booked_reservation_labels_ics_my_summary }}';
+$conf['settings']['reservation.labels']['my.calendar'] = '{{ booked_reservation_labels_my_calendar }}';
+$conf['settings']['reservation.labels']['resource.calendar'] = '{{ booked_reservation_labels_resource_calendar }}';
+$conf['settings']['reservation.labels']['reservation.popup'] = '{{ booked_reservation_labels_reservation_popup }}';
 /**
  * Security header settings
  */

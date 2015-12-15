@@ -14,6 +14,8 @@ booked_default_timezone: "America/Chicago"
 booked_allow_self_registration: "true"
 booked_admin_email: "admin@example.com"
 booked_admin_email_name: "Booked Scheduler"
+booked_default_page_size: "50"
+booked_enable_email: "true"
 booked_default_language: "en_us"
 booked_script_url: "http://localhost/Web"
 booked_registration_captcha_enabled: "true"
@@ -44,6 +46,14 @@ booked_plugin_authentication: ""
 booked_plugin_prereservation: ""
 
 booked_api_enabled: "false"
+
+booked_reservation_labels_ics_summary: "{title}"
+booked_reservation_labels_ics_my_summary: "{title}"
+booked_reservation_labels_rss_description: "<div><span>Start</span> {startdate}</div><div><span>End</span> {enddate}</div><div><span>Organizer</span> {name}</div><div><span>Description</span> {description}</div>"
+booked_reservation_labels_my_calendar: "{resourcename} {title}"
+booked_reservation_labels_resource_calendar: "{name}"
+booked_reservation_labels_reservation_popup: ""
+
 
 booked_log_dir: 'C:\temp\'
 booked_log_level_app: "OFF"
