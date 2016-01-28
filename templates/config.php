@@ -121,11 +121,11 @@ $conf['settings']['phpmailer']['smtp.debug'] = 'false';
  * Plugin configuration.  For more on plugins, see readme_installation.html
  */
 $conf['settings']['plugins']['Authentication'] = '{{ booked_plugin_authentication }}';
-$conf['settings']['plugins']['Authorization'] = '';
-$conf['settings']['plugins']['Permission'] = '';
-$conf['settings']['plugins']['PostRegistration'] = '';
+$conf['settings']['plugins']['Authorization'] = '{{ booked_plugin_authorization }}';
+$conf['settings']['plugins']['Permission'] = '{{ booked_plugin_permission }}';
+$conf['settings']['plugins']['PostRegistration'] = '{{ booked_plugin_postregistration }}';
 $conf['settings']['plugins']['PreReservation'] = '{{ booked_plugin_prereservation }}';
-$conf['settings']['plugins']['PostReservation'] = '';
+$conf['settings']['plugins']['PostReservation'] = '{{ booked_plugin_postreservation }}';
 /**
  * Installation settings
  */

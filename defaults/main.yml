@@ -44,7 +44,11 @@ booked_db_name: "bookedscheduler"
 booked_db_hostspec: "127.0.0.1"
 
 booked_plugin_authentication: ""
+booked_plugin_authorization: ""
+booked_plugin_permission: ""
+booked_plugin_postregistration: ""
 booked_plugin_prereservation: ""
+booked_plugin_postreservation: ""
 
 booked_api_enabled: "false"
 
