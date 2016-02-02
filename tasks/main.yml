@@ -34,6 +34,8 @@
 - name: template Booked config file
   template: src=config.php dest=/var/www/html/config/config.php
 
+- debug: var=mysql_user_password
+
 - name: template Booked log config file
   template: src=log4php.config.xml dest=/var/www/html/config/log4php.config.xml
 
