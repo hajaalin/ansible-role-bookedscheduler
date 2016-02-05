@@ -23,6 +23,7 @@ booked_inactivity_timeout: "30"
 booked_name_format: "{first} {last}"
 booked_disable_password_reset: "false"
 booked_logout_url: ""
+booked_default_homepage: "1"
 booked_schedule_show_inaccessible_resources: "true"
 
 booked_privacy_view_schedules: "false"
@@ -59,6 +60,7 @@ booked_reservation_labels_my_calendar: "{resourcename} {title}"
 booked_reservation_labels_resource_calendar: "{name}"
 booked_reservation_labels_reservation_popup: ""
 
+booked_google_analytics_tracking_id: ""
 
 booked_log_dir: 'C:\temp\'
 booked_log_level_app: "OFF"
