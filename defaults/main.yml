@@ -1,6 +1,8 @@
 ---
 # defaults file for ansible-booked-apache
 
+booked_install_dir: "/var/www/html"
+
 # these variables will be templated in Booked configuration (config/config.php)
 booked_app_title: "Booked Scheduler"
 booked_default_timezone: "America/Chicago"

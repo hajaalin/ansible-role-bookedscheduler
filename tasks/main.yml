@@ -12,39 +12,30 @@
   when: ansible_os_family == 'Debian'
 
 
-- name: check if this first install
-  stat: path=/var/www/html/config/config.php
-  register: previously_provisioned
-
-- name: remove default /var/www/html/index.html
-  file: path=/var/www/html/index.html state=absent
+- name: remove existing installation
+  file: path='{{ booked_install_dir }}' state=absent
 
 - name: create directories
   file: path={{ item }} state=directory owner={{ apache_user }} group={{ apache_user }}
   with_items:
+    - "{{ booked_install_dir }}"
     - "{{ booked_log_dir }}"
 
-
-# unpack source and move to document root
-- unarchive: src=booked-2.5.13.zip dest=/tmp
-  when: previously_provisioned.stat.exists == False
-- shell: mv /tmp/booked/* /var/www/html
-  when: previously_provisioned.stat.exists == False
+- name: unpack source archive
+  unarchive: src=booked-2.5.19.zip dest=/tmp
+- name: move source to installation directory
+  shell: mv /tmp/booked/* "{{ booked_install_dir }}"
 
 - name: template Booked config file
-  template: src=config.php dest=/var/www/html/config/config.php
+  template: src=config.php dest="{{ booked_install_dir }}/config/config.php"
 
 - name: template Booked log config file
-  template: src=log4php.config.xml dest=/var/www/html/config/log4php.config.xml
+  template: src=log4php.config.xml dest="{{ booked_install_dir }}/config/log4php.config.xml"
 
 - name: create .htaccess file
-  shell: echo "DirectoryIndex index.php" > /var/www/html/.htaccess
+  shell: echo "DirectoryIndex index.php" > "{{ booked_install_dir }}/.htaccess"
   args:
-    creates: /var/www/html/.htaccess
+    creates: "{{ booked_install_dir }}/.htaccess"
 
-- name: fix ownership of /var/www/html
-  file: path=/var/www/html recurse=yes owner={{ apache_user }} group={{ apache_user }}
-
-#- name: restart apache2
-#  service: name=apache2 state=restarted
-#  when: not build_docker_image
+- name: fix ownership of installation directory
+  file: path="{{ booked_install_dir }}" recurse=yes owner={{ apache_user }} group={{ apache_user }}
