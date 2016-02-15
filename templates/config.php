@@ -72,7 +72,7 @@ $conf['settings']['privacy']['hide.reservation.details'] = '{{ booked_privacy_hi
 /**
  * Reservation specific configuration
  */
-$conf['settings']['reservation']['start.time.constraint'] = 'future';		// when reservations can be created or edited. options are future, current, none
+$conf['settings']['reservation']['start.time.constraint'] = '{{ booked_reservation_start_time_constraint }}';		// when reservations can be created or edited. options are future, current, none
 $conf['settings']['reservation']['updates.require.approval'] = 'false';		// if updates to previously approved reservations require approval again
 $conf['settings']['reservation']['prevent.participation'] = '{{ booked_reservation_prevent_participation }}';		// if participation and invitation options should be removed
 $conf['settings']['reservation']['prevent.recurrence'] = '{{ booked_reservation_prevent_recurrence }}';			// if recurring reservations are disabled for non-administrators
