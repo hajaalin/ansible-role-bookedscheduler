@@ -1,7 +1,17 @@
 ---
 # defaults file for ansible-booked-apache
 
+booked_apache_user: "apache"
 booked_install_dir: "/var/www/html"
+
+# source type: local_archive, local_directory or git
+booked_source: "local_archive"
+
+booked_source_local_archive: "booked-2.5.19.zip"
+booked_source_local_dir: ""
+booked_source_git_repo: ""
+booked_source_git_version: ""
+booked_source_git_known_hosts_file: "/root/.ssh/known_hosts_github"
 
 # these variables will be templated in Booked configuration (config/config.php)
 booked_app_title: "Booked Scheduler"
@@ -26,6 +36,7 @@ booked_privacy_view_reservations: "false"
 booked_privacy_hide_user_details: "false"
 booked_privacy_hide_reservation_details: "false"
 
+booked_reservation_start_time_constraint: "future"
 booked_reservation_prevent_participation: "false"
 booked_reservation_prevent_recurrence: "false"
 
