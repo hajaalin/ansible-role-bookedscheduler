@@ -1,21 +1,8 @@
 ---
-- name: create directory for EPEL rpm
-  file: path=/root/rpm state=directory
-
-- name: download EPEL rpm
-  command: wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-  args:
-    chdir: /root/rpm
-    creates: /root/rpm/epel-release-latest-7.noarch.rpm
-  register: epel_rpm_download
-
-- name: install EPEL rpm
-  command: yum install -y /root/rpm/epel-release-latest-7.noarch.rpm
-  when: epel_rpm_download.changed
-
 
 - name: install dependencies
   yum: name={{ item }} state=present
   with_items:
     - unzip
-    - php-mcrypt
+    - git
+#    - php-mcrypt

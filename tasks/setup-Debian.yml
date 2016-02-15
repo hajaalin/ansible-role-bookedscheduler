@@ -1,8 +1,8 @@
 ---
-# tasks file for role "booked"
 
 - name: install dependencies
   apt: name={{ item }} state=present
   with_items:
     - unzip
+    - git
 #    - php5-mcrypt
