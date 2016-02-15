@@ -13,6 +13,7 @@ booked_source_git_repo: ""
 booked_source_git_version: ""
 booked_source_git_known_hosts_file: "/root/.ssh/known_hosts_github"
 
+
 # these variables will be templated in Booked configuration (config/config.php)
 booked_app_title: "Booked Scheduler"
 booked_default_timezone: "America/Chicago"
@@ -68,6 +69,8 @@ booked_reservation_labels_reservation_popup: ""
 
 booked_google_analytics_tracking_id: ""
 
+
+# log directory and levels
 booked_log_dir: 'C:\temp\'
 booked_log_level_app: "OFF"
 booked_log_level_sql: "OFF"
