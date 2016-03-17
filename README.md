@@ -25,7 +25,7 @@ This role has been tested with the following:
 Example Playbook
 ----------------
 
-An example of how to use this role can be found in https://github.com/UH-LMU/bookedscheduler-deploy.
+An example of how to use this role can be found in https://github.com/hajaalin/bookedscheduler-deploy-example.
 
 License
 -------
@@ -35,4 +35,4 @@ BSD
 Author Information
 ------------------
 
-Harri Jäälinoja.
+Harri Jäälinoja
