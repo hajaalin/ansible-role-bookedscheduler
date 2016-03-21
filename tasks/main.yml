@@ -6,12 +6,10 @@
 - name: remove existing installation
   file: path='{{ booked_install_dir }}' state=absent
 
-- name: create directories
-  file: path={{ item }} state=directory owner={{ booked_apache_user }} group={{ booked_apache_user }}
-  with_items:
-    - "{{ booked_install_dir }}"
-    - "{{ booked_log_dir }}"
-
+- name: create install directory
+  file: path="{{ booked_install_dir }}" state=directory owner={{ booked_apache_user }} group={{ booked_apache_user }} mode=0700
+- name: create log directory
+  file: path="{{ booked_log_dir }}" state=directory owner={{ booked_apache_user }} group={{ booked_apache_user }} mode=0755
 
 - block:
   - name: unpack local source archive
