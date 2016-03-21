@@ -9,7 +9,7 @@
 - name: create install directory
   file: path="{{ booked_install_dir }}" state=directory owner={{ booked_apache_user }} group={{ booked_apache_user }} mode=0700
 - name: create log directory
-  file: path="{{ booked_log_dir }}" state=directory owner={{ booked_apache_user }} group={{ booked_apache_user }} mode=0755
+  file: path="{{ booked_log_dir }}" state=directory owner={{ booked_apache_user }} group={{ booked_apache_user }} mode=0775
 
 - block:
   - name: unpack local source archive
