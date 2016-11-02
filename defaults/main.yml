@@ -40,6 +40,7 @@ booked_privacy_hide_reservation_details: "false"
 booked_reservation_start_time_constraint: "future"
 booked_reservation_prevent_participation: "false"
 booked_reservation_prevent_recurrence: "false"
+booked_reservation_enable_reminders: "false"
 
 booked_ics_require_login: "true"
 booked_ics_subscription_key: ""

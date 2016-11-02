@@ -76,7 +76,7 @@ $conf['settings']['reservation']['start.time.constraint'] = '{{ booked_reservati
 $conf['settings']['reservation']['updates.require.approval'] = 'false';		// if updates to previously approved reservations require approval again
 $conf['settings']['reservation']['prevent.participation'] = '{{ booked_reservation_prevent_participation }}';		// if participation and invitation options should be removed
 $conf['settings']['reservation']['prevent.recurrence'] = '{{ booked_reservation_prevent_recurrence }}';			// if recurring reservations are disabled for non-administrators
-$conf['settings']['reservation']['enable.reminders'] = 'false';				// if reminders are enabled. this requires email to be enabled and the reminder job to be configured
+$conf['settings']['reservation']['enable.reminders'] = '{{ booked_reservation_enable_reminders }}';				// if reminders are enabled. this requires email to be enabled and the reminder job to be configured
 /**
  * Email notification configuration
  */
