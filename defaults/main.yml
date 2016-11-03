@@ -68,6 +68,17 @@ booked_reservation_labels_my_calendar: "{resourcename} {title}"
 booked_reservation_labels_resource_calendar: "{name}"
 booked_reservation_labels_reservation_popup: ""
 
+booked_phpmailer_mailer: 'mail'             # options are 'mail', 'smtp' or 'sendmail'
+booked_phpmailer_smtp_host: ''              # 'smtp_company.com'
+booked_phpmailer_smtp_port: '25'
+booked_phpmailer_smtp_secure: ''            # options are '', 'ssl' or 'tls'
+booked_phpmailer_smtp_auth: 'true'          # options are 'true' or 'false'
+booked_phpmailer_smtp_username: ''
+booked_phpmailer_smtp_password: ''
+booked_phpmailer_sendmail_path: '/usr/sbin/sendmail'
+booked_phpmailer_smtp_debug: 'false'
+
+
 booked_google_analytics_tracking_id: ""
 
 

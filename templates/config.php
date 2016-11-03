@@ -109,15 +109,15 @@ $conf['settings']['database']['name'] = '{{ booked_db_name }}';
 /**
  * Mail server configuration
  */
-$conf['settings']['phpmailer']['mailer'] = 'mail';              // options are 'mail', 'smtp' or 'sendmail'
-$conf['settings']['phpmailer']['smtp.host'] = '';               // 'smtp.company.com'
-$conf['settings']['phpmailer']['smtp.port'] = '25';
-$conf['settings']['phpmailer']['smtp.secure'] = '';             // options are '', 'ssl' or 'tls'
-$conf['settings']['phpmailer']['smtp.auth'] = 'true';           // options are 'true' or 'false'
-$conf['settings']['phpmailer']['smtp.username'] = '';
-$conf['settings']['phpmailer']['smtp.password'] = '';
-$conf['settings']['phpmailer']['sendmail.path'] = '/usr/sbin/sendmail';
-$conf['settings']['phpmailer']['smtp.debug'] = 'false';
+$conf['settings']['phpmailer']['mailer'] = '{{ booked_phpmailer_mailer }}';              // options are 'mail', 'smtp' or 'sendmail'
+$conf['settings']['phpmailer']['smtp.host'] = '{{ booked_phpmailer_smtp_host }}';               // 'smtp.company.com'
+$conf['settings']['phpmailer']['smtp.port'] = '{{ booked_phpmailer_smtp_port }}';
+$conf['settings']['phpmailer']['smtp.secure'] = '{{ booked_phpmailer_smtp_secure }}';             // options are '', 'ssl' or 'tls'
+$conf['settings']['phpmailer']['smtp.auth'] = '{{ booked_phpmailer_smtp_auth }}';           // options are 'true' or 'false'
+$conf['settings']['phpmailer']['smtp.username'] = '{{ booked_phpmailer_smtp_username }}';
+$conf['settings']['phpmailer']['smtp.password'] = '{{ booked_phpmailer_smtp_password }}';
+$conf['settings']['phpmailer']['sendmail.path'] = '{{ booked_phpmailer_sendmail_path }}';
+$conf['settings']['phpmailer']['smtp.debug'] = '{{ booked_phpmailer_smtp_debug }}';
 /**
  * Plugin configuration.  For more on plugins, see readme_installation.html
  */
