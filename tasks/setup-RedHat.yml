@@ -1,6 +1,6 @@
 ---
 
-- name: install dependencies
+- name: bookedscheduler | install dependencies
   yum: name={{ item }} state=present
   with_items:
     - unzip
