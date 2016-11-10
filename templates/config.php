@@ -69,7 +69,7 @@ $conf['settings']['privacy']['view.schedules'] = '{{ booked_privacy_view_schedul
 $conf['settings']['privacy']['view.reservations'] = '{{ booked_privacy_view_reservations }}';    			// if unauthenticated users can view reservations
 $conf['settings']['privacy']['hide.user.details'] = '{{ booked_privacy_hide_user_details }}';    			// if personal user details should be displayed to non-administrators
 $conf['settings']['privacy']['hide.reservation.details'] = '{{ booked_privacy_hide_reservation_details }}';			// if reservation details should be displayed to non-administrators
-$conf['settings']['privacy']['allow.guest.reservations'] = '{{ booked_privacy_allow_gues_reservations }}';			// if reservations can be made by users without a Booked account, if true this overrides schedule and resource visibility
+$conf['settings']['privacy']['allow.guest.reservations'] = '{{ booked_privacy_allow_guest_reservations }}';			// if reservations can be made by users without a Booked account, if true this overrides schedule and resource visibility
 /**
  * Reservation specific configuration
  */
