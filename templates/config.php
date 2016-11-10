@@ -177,7 +177,7 @@ $conf['settings']['security']['security.strict-transport'] = '{{ booked_security
 $conf['settings']['security']['security.x-frame'] = '{{ booked_security_x_frame }}';
 $conf['settings']['security']['security.x-xss'] = '{{ booked_security_x_xss }}';
 $conf['settings']['security']['security.x-content-type'] = '{{ booked_security_x_content_type }}';
-$conf['settings']['security']['security.content-security-policy'] = '{{ booked_security_content_security_policy }}'; // Requires careful tuning (know what your doing)
+$conf['settings']['security']['security.content-security-policy'] = "{{ booked_security_content_security_policy }}"; // Requires careful tuning (know what your doing)
 /**
  * Google Analytics settings
  */
