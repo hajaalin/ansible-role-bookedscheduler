@@ -46,16 +46,20 @@ booked_schedule_show_inaccessible_resources: "true"
 booked_schedule_reservation_label: "{name}"
 booked_schedule_hide_blocked_periods: "false"
 
-booked_privacy_view_schedules: "false"
+booked_privacy_view_schedules: "true"
 booked_privacy_view_reservations: "false"
 booked_privacy_hide_user_details: "false"
 booked_privacy_hide_reservation_details: "false"
+booked_privacy_allow_guest_reservations: "false"
 
 booked_reservation_start_time_constraint: "future"
 booked_reservation_updates_require_approval: "false"
 booked_reservation_prevent_participation: "false"
 booked_reservation_prevent_recurrence: "false"
 booked_reservation_enable_reminders: "false"
+booked_reservation_allow_guest_participation: "false"
+booked_reservation_allow_wait_list: "false"
+booked_reservation_checkin_minutes_prior: "5"
 
 booked_reservation_notify_resource_admin_add: "false"
 booked_reservation_notify_resource_admin_update: "false"
@@ -136,6 +140,10 @@ booked_phpmailer_smtp_debug: 'false'
 
 booked_google_analytics_tracking_id: ""
 
+booked_authentication_allow_social_login: "false"
+booked_authentication_required_email_domains: ""
+
+booked_credit_enabled: "false"
 
 # log directory and levels
 booked_log_dir: 'C:\temp\'

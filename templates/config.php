@@ -1,6 +1,6 @@
   <?php
 /**
-Copyright 2011-2015 Nick Korbel
+Copyright 2011-2016 Nick Korbel
 
 This file is part of Booked Scheduler.
 
@@ -69,6 +69,7 @@ $conf['settings']['privacy']['view.schedules'] = '{{ booked_privacy_view_schedul
 $conf['settings']['privacy']['view.reservations'] = '{{ booked_privacy_view_reservations }}';    			// if unauthenticated users can view reservations
 $conf['settings']['privacy']['hide.user.details'] = '{{ booked_privacy_hide_user_details }}';    			// if personal user details should be displayed to non-administrators
 $conf['settings']['privacy']['hide.reservation.details'] = '{{ booked_privacy_hide_reservation_details }}';			// if reservation details should be displayed to non-administrators
+$conf['settings']['privacy']['allow.guest.reservations'] = '{{ booked_privacy_allow_gues_reservations }}';			// if reservations can be made by users without a Booked account, if true this overrides schedule and resource visibility
 /**
  * Reservation specific configuration
  */
@@ -77,6 +78,9 @@ $conf['settings']['reservation']['updates.require.approval'] = '{{ booked_reserv
 $conf['settings']['reservation']['prevent.participation'] = '{{ booked_reservation_prevent_participation }}';		// if participation and invitation options should be removed
 $conf['settings']['reservation']['prevent.recurrence'] = '{{ booked_reservation_prevent_recurrence }}';			// if recurring reservations are disabled for non-administrators
 $conf['settings']['reservation']['enable.reminders'] = '{{ booked_reservation_enable_reminders }}';				// if reminders are enabled. this requires email to be enabled and the reminder job to be configured
+$conf['settings']['reservation']['allow.guest.participation'] = '{{ booked_reservation_allow_guest_participation }}';
+$conf['settings']['reservation']['allow.wait.list'] = '{{ booked_reservation_allow_wait_list }}';
+$conf['settings']['reservation']['checkin.minutes.prior'] = '{{ booked_reservation_checkin_minutes_prior }}';
 /**
  * Email notification configuration
  */
@@ -168,7 +172,7 @@ $conf['settings']['reservation.labels']['ics.my.summary'] = '{{ booked_reservati
 $conf['settings']['reservation.labels']['rss.description'] = '{{ booked_reservation_labels_ics_my_summary }}';
 $conf['settings']['reservation.labels']['my.calendar'] = '{{ booked_reservation_labels_my_calendar }}';
 $conf['settings']['reservation.labels']['resource.calendar'] = '{{ booked_reservation_labels_resource_calendar }}';
-$conf['settings']['reservation.labels']['reservation.popup'] = '{{ booked_reservation_labels_reservation_popup }}';
+$conf['settings']['reservation.labels']['reservation.popup'] = '{{ booked_reservation_labels_reservation_popup }}'; // Format for what to display in reservation popups. Possible values: {name} {dates} {title} {resources} {participants} {accessories} {description} {attributes}. Custom attributes can be added using att with the attribute id. For example {att1}
 /**
  * Security header settings
  */
@@ -182,3 +186,10 @@ $conf['settings']['security']['security.content-security-policy'] = "{{ booked_s
  * Google Analytics settings
  */
 $conf['settings']['google.analytics']['tracking.id'] = '{{ booked_google_analytics_tracking_id }}'; // if set, Google Analytics tracking code will be added to every page in Booked
+
+$conf['settings']['authentication']['allow.social.login'] = '{{ booked_authentication_allow_social_login }}';
+$conf['settings']['authentication']['required.email.domains'] = '{{ booked_authentication_required_email_domains }}';
+/**
+ * Credits functionality
+ */
+$conf['settings']['credits']['enabled'] = '{{ booked_credit_enabled }}';
