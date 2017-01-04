@@ -3,31 +3,31 @@
 
 - include: "setup-{{ ansible_os_family }}.yml"
 
-- name: remove existing installation
+- name: remove existing installation
   file: path="{{ booked_install_dir }}" state=absent
 
-- name: create install directory
+- name: create install directory
   file: path="{{ booked_install_dir }}" state=directory owner="{{ booked_apache_user }}" group="{{ booked_apache_user }}" mode=0700
-- name: create log directory
+- name: create log directory
   file: path="{{ booked_log_dir }}" state=directory owner="{{ booked_apache_user }}" group="{{ booked_apache_user }}" mode=0775
 
 - block:
-  - name: unpack local source archive
+  - name: unpack local source archive
     unarchive: src="{{ booked_source_local_archive }}" dest=/tmp
-  - name: move source to installation directory
+  - name: move source to installation directory
     shell: mv /tmp/booked/* "{{ booked_install_dir }}"
   when: booked_source == "local_archive"
 
-- name: copy source from local directory
+- name: copy source from local directory
   synchronize: src="{{ booked_source_local_dir }}" dest="{{ booked_install_dir }}"
   when: booked_source == "local_directory"
 
 - block:
-  - name: check if known_hosts_github exists
+  - name: check if known_hosts_github exists
     stat: path="{{ booked_source_git_known_hosts_file }}"
     register: known_hosts_github
   # https://gist.github.com/maxim/871e611d4bc02c633c67
-  - name: ensure github.com is a known host
+  - name: ensure github.com is a known host
     lineinfile:
       dest: "{{ booked_source_git_known_hosts_file }}"
       create: yes
@@ -35,25 +35,25 @@
       line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
       regexp: "^github\\.com"
     when: not known_hosts_github.stat.exists
-  - name: set permissions on /root/.ssh/
+  - name: set permissions on /root/.ssh/
     file: path=/root/.ssh mode=0700
-  - name: set permissions on known_hosts_github
+  - name: set permissions on known_hosts_github
     file: path="{{ booked_source_git_known_hosts_file }}" mode=0600
-  - name: get source from Git
+  - name: get source from Git
     git: repo="{{ booked_source_git_repo }}" version="{{ booked_source_git_version }}" dest="{{ booked_install_dir }}" accept_hostkey=yes ssh_opts="-o UserKnownHostsFile={{ booked_source_git_known_hosts_file }}"
   when: booked_source == "git"
 
 
-- name: template Booked config file
+- name: template Booked config file
   template: src=config.php dest="{{ booked_install_dir }}/config/config.php"
 
-- name: template Booked log config file
+- name: template Booked log config file
   template: src=log4php.config.xml dest="{{ booked_install_dir }}/config/log4php.config.xml"
 
-- name: create .htaccess file
+- name: create .htaccess file
   shell: echo "DirectoryIndex index.php" > "{{ booked_install_dir }}/.htaccess"
   args:
     creates: "{{ booked_install_dir }}/.htaccess"
 
-- name: fix ownership of installation directory
+- name: fix ownership of installation directory
   file: path="{{ booked_install_dir }}" recurse=yes owner="{{ booked_apache_user }}" group="{{ booked_apache_user }}"
