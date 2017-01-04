@@ -4,12 +4,12 @@
 - include: "setup-{{ ansible_os_family }}.yml"
 
 - name: remove existing installation
-  file: path='{{ booked_install_dir }}' state=absent
+  file: path="{{ booked_install_dir }}" state=absent
 
 - name: create install directory
-  file: path="{{ booked_install_dir }}" state=directory owner={{ booked_apache_user }} group={{ booked_apache_user }} mode=0700
+  file: path="{{ booked_install_dir }}" state=directory owner="{{ booked_apache_user }}" group="{{ booked_apache_user }}" mode=0700
 - name: create log directory
-  file: path="{{ booked_log_dir }}" state=directory owner={{ booked_apache_user }} group={{ booked_apache_user }} mode=0775
+  file: path="{{ booked_log_dir }}" state=directory owner="{{ booked_apache_user }}" group="{{ booked_apache_user }}" mode=0775
 
 - block:
   - name: unpack local source archive
@@ -56,4 +56,4 @@
     creates: "{{ booked_install_dir }}/.htaccess"
 
 - name: fix ownership of installation directory
-  file: path="{{ booked_install_dir }}" recurse=yes owner={{ booked_apache_user }} group={{ booked_apache_user }}
+  file: path="{{ booked_install_dir }}" recurse=yes owner="{{ booked_apache_user }}" group="{{ booked_apache_user }}"
