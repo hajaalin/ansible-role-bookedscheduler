@@ -1,5 +1,9 @@
   <?php
 /**
+This file is modified from the Booked Scheduler configuration file.
+See below for the original copyright statement.
+
+-- Booked copyright --
 Copyright 2011-2016 Nick Korbel
 
 This file is part of Booked Scheduler.
@@ -16,6 +20,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
+-- Booked copyright --
 */
 
 error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT);
