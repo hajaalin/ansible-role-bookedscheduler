@@ -7,7 +7,7 @@ booked_install_dir: "/var/www/html"
 # source type: local_archive, local_directory or git
 booked_source: "local_archive"
 
-booked_source_local_archive: "booked-2.5.19.zip"
+booked_source_local_archive: ~
 booked_source_local_dir: ""
 booked_source_git_repo: ""
 booked_source_git_version: ""
