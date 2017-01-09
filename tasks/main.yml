@@ -12,14 +12,21 @@
   file: path="{{ booked_log_dir }}" state=directory owner="{{ booked_apache_user }}" group="{{ booked_apache_user }}" mode=0775
 
 - block:
+  - fail:
+      msg: "booked_source_local_archive is empty"
+    when: booked_source_local_archive == ""
   - name: unpack local source archive
     unarchive: src="{{ booked_source_local_archive }}" dest=/tmp
   - name: move source to installation directory
     shell: mv /tmp/booked/* "{{ booked_install_dir }}"
   when: booked_source == "local_archive"
 
-- name: copy source from local directory
-  synchronize: src="{{ booked_source_local_dir }}" dest="{{ booked_install_dir }}"
+- block:
+  - fail:
+      msg: "booked_source_local_dir is empty"
+    when: booked_source_local_dir == ""
+  - name: copy source from local directory
+    synchronize: src="{{ booked_source_local_dir }}" dest="{{ booked_install_dir }}"
   when: booked_source == "local_directory"
 
 - block:
