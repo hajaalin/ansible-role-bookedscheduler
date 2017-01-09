@@ -16,9 +16,10 @@ See defaults/main.yml.
 Dependencies
 ------------
 This role has been tested with the following:
-- geerlingguy.apache (version: 1.5.3)
-- geerlingguy.mysql (version: 1.9.1)
-- geerlingguy.php (version: 1.8.2)
+- geerlingguy.apache (version: 1.7.3)
+- geerlingguy.mysql (version: 2.4.0)
+- geerlingguy.php (version: 3.3.0)
+- jdauphant.ssl-certs (version: 1.2.5)
 
 
 
@@ -30,7 +31,7 @@ An example of how to use this role can be found in https://github.com/hajaalin/b
 License
 -------
 
-BSD
+GPLv3
 
 Author Information
 ------------------
