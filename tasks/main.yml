@@ -30,22 +30,6 @@
   when: booked_source == "local_directory"
 
 - block:
-  - name: check if known_hosts_github exists
-    stat: path="{{ booked_source_git_known_hosts_file }}"
-    register: known_hosts_github
-  # https://gist.github.com/maxim/871e611d4bc02c633c67
-  - name: ensure github.com is a known host
-    lineinfile:
-      dest: "{{ booked_source_git_known_hosts_file }}"
-      create: yes
-      state: present
-      line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
-      regexp: "^github\\.com"
-    when: not known_hosts_github.stat.exists
-  - name: set permissions on /root/.ssh/
-    file: path=/root/.ssh mode=0700
-  - name: set permissions on known_hosts_github
-    file: path="{{ booked_source_git_known_hosts_file }}" mode=0600
   - name: get source from Git
     git: repo="{{ booked_source_git_repo }}" version="{{ booked_source_git_version }}" dest="{{ booked_install_dir }}" accept_hostkey=yes ssh_opts="-o UserKnownHostsFile={{ booked_source_git_known_hosts_file }}"
   when: booked_source == "git"
