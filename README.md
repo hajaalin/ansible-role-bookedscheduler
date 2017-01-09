@@ -1,7 +1,7 @@
 bookedscheduler
 =========
 
-Installs Booked Scheduler (https://www.bookedscheduler.com) source code and templates configuration files. The source code can be retrieved from a local archive file (default is the official Booked distribution), a local directory, or a Git repository. The latter two are useful if you want to make custom modifications to the source code.
+Installs Booked Scheduler (https://www.bookedscheduler.com) source code and templates configuration files. The source code can be retrieved from a local archive file, a local directory, or a Git repository. The latter two are useful if you want to make custom modifications to the source code.
 
 Requirements
 ------------
