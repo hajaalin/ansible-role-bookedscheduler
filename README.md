@@ -1,7 +1,9 @@
 bookedscheduler
 =========
 
-Installs Booked Scheduler (https://www.bookedscheduler.com) source code and templates configuration files. The source code can be retrieved from a local archive file, a local directory, or a Git repository. The latter two are useful if you want to make custom modifications to the source code.
+Installs Booked Scheduler (https://www.bookedscheduler.com) source code and templates configuration files.
+The source code can be retrieved from a local archive file, a local directory, or a Git repository.
+The latter two are useful if you want to make custom modifications to the source code.
 
 Requirements
 ------------
@@ -21,6 +23,8 @@ This role has been tested with the following:
 - geerlingguy.php (version: 3.3.0)
 - jdauphant.ssl-certs (version: 1.2.5)
 
+These are not marked as dependencies in meta/main.yml, so you can choose to use
+whichever roles you prefer for setting up the AMP stack.
 
 
 Example Playbook
