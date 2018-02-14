@@ -3,6 +3,7 @@
 
 booked_apache_user: "apache"
 booked_install_dir: "/var/www/html"
+booked_archive_dir: "/var/www/archive"
 
 # source type: local_archive, local_directory or git
 booked_source: "local_archive"

@@ -3,6 +3,11 @@
 
 - include: "setup-{{ ansible_os_family }}.yml"
 
+- name: create archive directory
+  file: path="{{ booked_archive_dir }}" state=directory owner="{{ booked_apache_user }}" group="{{ booked_apache_user }}" mode=0700
+- name: archive existing installation
+  shell: tar cf "{{ booked_archive_dir }}/booked_`date +%Y%m%d%H%M`.tar" "{{ booked_install_dir }}"
+
 - name: remove existing installation
   file: path="{{ booked_install_dir }}" state=absent
 
